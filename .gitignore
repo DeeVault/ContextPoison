@@ -1,0 +1,20 @@
+# Generated outputs
+results.db
+sample.json
+*_report.md
+report.md
+outputs/
+
+# Secrets
+.env
+*.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Editor
+.vscode/
+.idea/
