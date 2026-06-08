@@ -1,7 +1,7 @@
 # ContextPoison: Benchmarking LLM Resistance to Fabricated Evidence Injection
 
-**Connor McGhee** | Glasgow Caledonian University, BSc Cyber Security & Networks  
-**June 2026** | [github.com/yourusername/contextpoison]
+**Connor Dempster** | Glasgow Caledonian University, BSc Cyber Security & Networks  
+**June 2026**
 
 ---
 
