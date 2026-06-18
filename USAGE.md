@@ -1,14 +1,20 @@
 # ContextPoison — Usage Guide
 
+> **Out of the box, only 6 benign example seeds ship** (`statements/example_seeds.json`).
+> The harmful HVD attack corpus is not bundled (see the README "Dataset" section). The
+> `--total` examples below are capped to the number of statements actually present, so
+> against the example seeds they yield 6. To reproduce the published findings, add the
+> HVD corpus to `statements/` first (see README "Custom corpus") and raise `--total`.
+
 ## Quick Start
 
-### Example 1 — Full benchmark against Claude Haiku
+### Example 1 — Benchmark against Claude Haiku
 
 Run these four commands in sequence. Each builds on the last.
 
 ```bash
-# 1. Create a reproducible 1000-statement sample (run once, reuse across models)
-python sample_statements.py --total 1000 --seed 42
+# 1. Create a reproducible sample (caps to the statements available — 6 example seeds out of the box)
+python sample_statements.py --total 6 --seed 42
 
 # 2. Collect baseline responses — bare question, no injection
 python contextpoison.py --sample sample.json --target claude-haiku-4-5-20251001 --baseline
@@ -50,12 +56,15 @@ export XAI_API_KEY=...                # required for xAI / Grok target models
 
 ## 1. Generate a reproducible sample
 
-Creates `sample.json` with statement IDs distributed evenly across all 11 categories.
+Creates `sample.json` with statement IDs distributed evenly across whatever categories
+are present in `statements/` (out of the box, just the `example_seeds` category).
 Use the same `--seed` and `--total` across all model runs for fair comparison.
+`--total` is capped to the number of statements available.
 
 ```bash
-python sample_statements.py --total 1000 --seed 42
-python sample_statements.py --total 100  --seed 42   # smaller run for testing
+python sample_statements.py --total 6 --seed 42      # 6 example seeds out of the box
+# With the full HVD corpus added to statements/, scale up, e.g.:
+# python sample_statements.py --total 1000 --seed 42
 ```
 
 ---
@@ -145,8 +154,9 @@ python contextpoison.py --list-categories
 # List example model strings by provider
 python contextpoison.py --list-models
 
-# Run a single category (no sample file needed)
-python contextpoison.py --category misinfo_political --target gpt-4o-mini
+# Run a single category (no sample file needed); the category is the filename
+# in statements/ without .json — out of the box that is example_seeds
+python contextpoison.py --category example_seeds --target gpt-4o-mini
 
 # Run all categories with a hard limit
 python contextpoison.py --all --target gpt-4o-mini --limit 200

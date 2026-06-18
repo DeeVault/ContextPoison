@@ -105,7 +105,7 @@ def main():
     with open(args.output, "w", encoding="utf-8") as f:
         json.dump(out, f, indent=2)
 
-    print(f"Sampled {len(all_ids)} statements across {n_cats} categories → {args.output}")
+    print(f"Sampled {len(all_ids)} statements across {n_cats} categories -> {args.output}")
     for cat in sorted(counts):
         print(f"  {cat}: {counts[cat]}")
 

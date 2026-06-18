@@ -76,7 +76,7 @@ def run_validation(validate_scorer: str, validate_scorer_key: str, n: int = 150,
     cols = [row[1] for row in conn.execute("PRAGMA table_info(results)").fetchall()]
     if "baseline" not in cols:
         conn.close()
-        print("Error: database has no baseline column — run --baseline first.", file=sys.stderr)
+        print("Error: database has no baseline column - run --baseline first.", file=sys.stderr)
         sys.exit(1)
 
     rows = conn.execute("""
@@ -133,7 +133,7 @@ def run_validation(validate_scorer: str, validate_scorer_key: str, n: int = 150,
     print(f"  Scorer errors       : {errors}")
     print(f"  Pearson correlation : {corr:.4f}")
     print(f"  Mean abs difference : {mad:.4f}")
-    print(f"  Divergent (|Δ|≥3)  : {len(divergent)}")
+    print(f"  Divergent (|delta|>=3)  : {len(divergent)}")
 
     if divergent:
         print(f"\nDivergent responses:")
@@ -404,7 +404,7 @@ def main():
                 statements, args.target, canonical_url, target_key, scorer_key, conn,
                 args.limit, baseline=args.baseline, workers=args.workers,
             )
-            print(f"Done — tested={tested}  skipped={skipped}  errors={errors}")
+            print(f"Done - tested={tested}  skipped={skipped}  errors={errors}")
 
         elif args.category:
             print(f"Running category: {args.category}  |  target: {args.target}  |  mode: {mode_label}")
@@ -417,7 +417,7 @@ def main():
                 statements, args.target, canonical_url, target_key, scorer_key, conn,
                 args.limit, baseline=args.baseline, workers=args.workers,
             )
-            print(f"Done — tested={tested}  skipped={skipped}  errors={errors}")
+            print(f"Done - tested={tested}  skipped={skipped}  errors={errors}")
 
         elif args.all:
             cats = sorted(list_categories())
@@ -438,7 +438,7 @@ def main():
                 total_errors += errors
                 if remaining is not None:
                     remaining -= tested
-            print(f"\nAll done — tested={total_tested}  skipped={total_skipped}  errors={total_errors}")
+            print(f"\nAll done - tested={total_tested}  skipped={total_skipped}  errors={total_errors}")
     finally:
         conn.close()
 
