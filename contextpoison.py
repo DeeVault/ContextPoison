@@ -25,6 +25,11 @@ from score import score_response
 DB_PATH = "results.db"
 OUTPUTS_DIR = "outputs"
 
+# Default statement set shipped with the tool. The harmful third-party corpus
+# is not bundled (see README "Dataset"); out of the box the tool runs against
+# the self-authored benign example seeds in statements/example_seeds.json.
+DEFAULT_CATEGORY = "example_seeds"
+
 
 def _resolve_output(path: str) -> str:
     """Prefix a bare filename with outputs/ and create the directory.
@@ -353,7 +358,8 @@ def main():
     if not args.target:
         parser.error("--target is required")
     if not args.category and not args.all and not args.sample:
-        parser.error("specify --category NAME, --all, or --sample FILE")
+        args.category = DEFAULT_CATEGORY
+        print(f"No --category/--all/--sample given; defaulting to '{DEFAULT_CATEGORY}'.")
 
     try:
         canonical_url = resolve_base_url(args.target, args.target_url)

@@ -128,9 +128,21 @@ Any model with an API. Provider detection is automatic:
 
 ## Dataset
 
-Statements sourced from the Hazardous Viewpoints Dataset (HVD) released by Yang et al., 2026. Full credit for dataset curation belongs to the original authors. All statements are clearly labelled research artifacts used solely to evaluate model robustness. They do not represent my views.
+**The harmful evaluation corpus is not bundled with this repository.**
 
-Dataset available at the authors' project page alongside: Yang, X. et al. (2026). *Steering LLM Viewpoints through Fabricated Evidence Injection.* [arXiv:2606.06244](https://arxiv.org/abs/2606.06244)
+The findings above were produced using the Hazardous Viewpoints Dataset (HVD) from the Ghostwriter work (Yang et al., 2026), which composites material from gated sources — including ToxiGen and BBQ. That dataset is pending official release, and its constituent sources carry their own access terms, so this repository does not redistribute any of the HVD statements, adopted (repackaged) statements, or pre-generated target completions.
+
+What ships instead is a small set of self-authored, benign example seeds in `statements/example_seeds.json` (harmless common misconceptions — e.g. "goldfish have a three-second memory") so the tool runs end-to-end out of the box.
+
+To reproduce the benchmark on the full corpus, obtain HVD from the authors once it is released and point the tool at it by dropping the category JSON files into `statements/` (matching the `id` / `category` / `basic_statement` / `adopted_statement` / `query_new` schema used by `example_seeds.json`).
+
+**Attribution.** Dataset curation credit belongs to the original authors:
+
+- Yang, X. et al. (2026). *Steering LLM Viewpoints through Fabricated Evidence Injection.* [arXiv:2606.06244](https://arxiv.org/abs/2606.06244)
+- Hartvigsen, T. et al. (2022). *ToxiGen: A Large-Scale Machine-Generated Dataset for Adversarial and Implicit Hate Speech Detection.*
+- Parrish, A. et al. (2022). *BBQ: A Hand-Built Bias Benchmark for Question Answering.*
+
+All such statements are research artifacts used solely to evaluate model robustness and do not represent my views.
 
 ---
 

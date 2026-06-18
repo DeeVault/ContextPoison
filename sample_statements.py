@@ -3,6 +3,11 @@
 Generate a reproducible, evenly-distributed sample of statement IDs
 across all categories for use with contextpoison.py --sample.
 
+Samples whatever statement files are present in statements/. The harmful
+third-party corpus is not bundled (see README "Dataset"), so out of the box
+this samples the self-authored benign example seeds (statements/example_seeds.json).
+Point it at the full dataset once you have obtained it from the authors.
+
 Usage:
     python sample_statements.py --total 1000 --seed 42
     python sample_statements.py --total 100  --seed 42
