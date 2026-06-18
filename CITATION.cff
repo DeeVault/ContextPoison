@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+title: ContextPoison
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Connor
+    family-names: Dempster
+repository-code: 'https://github.com/DeeVault/contextpoison'
+url: 'https://github.com/DeeVault/contextpoison'
+abstract: >-
+  A benchmarking tool that measures how well AI models
+  resist fabricated evidence injection (the Ghostwriter
+  attack), comparing baseline and under-attack viewpoint
+  adoption across frontier models.
+keywords:
+  - llm
+  - ai-safety
+  - benchmark
+  - prompt-injection
+  - red-teaming
+license: MIT
+version: 0.1.0
+date-released: '2026-06-18'
+year: 2026
