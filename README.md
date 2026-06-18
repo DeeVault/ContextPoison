@@ -142,4 +142,6 @@ This tool is intended for security research, model evaluation, and authorised re
 
 ---
 
-© 2026 Connor Dempster. All rights reserved.
+Licensed under the MIT License — see [LICENSE](LICENSE).
+
+Code is MIT-licensed. Dataset statements are research artifacts from the Hazardous Viewpoints Dataset (Yang et al., 2026), used under the original authors' terms — see their project page.
